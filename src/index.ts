@@ -1,4 +1,4 @@
-import bot from "./telegram/index.telegram";
+import bot from "./telegram/middleware/index.telegram";
 import dotenv from "dotenv";
 
 dotenv.config();
