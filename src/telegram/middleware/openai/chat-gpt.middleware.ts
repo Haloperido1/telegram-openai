@@ -18,4 +18,22 @@ const askGpt = () => {
     next();
   };
 };
-export default askGpt;
+
+const gpt = () => {
+  return async (ctx: Context, next: () => Promise<void>) => {
+    ctx.sendMessage(
+      "Available options \n In /ask mode you can get short answer on your question \n In /chat mode chat will be created",
+      {
+        reply_markup: {
+          keyboard: [[{ text: "/ask" }, { text: "/chat" }]],
+          resize_keyboard: true,
+          one_time_keyboard: true,
+        },
+      }
+    );
+    await next();
+    ctx.deleteMessage();
+  };
+};
+
+export { askGpt, gpt };
