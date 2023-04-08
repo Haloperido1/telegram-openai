@@ -1,14 +1,28 @@
 import { Context } from "telegraf";
 
 const info = () => {
-  return (ctx: Context, next: () => Promise<void>) => {
+  return async (ctx: Context, next: () => Promise<void>) => {
     ctx.sendMessage("Bot info", {
       reply_markup: {
         keyboard: [[{ text: "/Credits" }, { text: "/API" }]],
         resize_keyboard: true,
         one_time_keyboard: true,
+        remove_keyboard: true,
       },
     });
+    //   .then((res) => {
+    //     console.log(res.message_id);
+    //   });
+
+    // console.log(ctx);
+    // //To delete message after selection
+    // //@ts-expect-error here we shure that's message wouldn't be undef
+    // const messageId = ctx.update.message.message_id;
+
+    await next();
+
+    // console.log("Deleting: ", messageId);
+    // ctx.deleteMessage(messageId);
   };
 };
 

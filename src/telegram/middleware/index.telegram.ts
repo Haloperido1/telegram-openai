@@ -13,6 +13,7 @@ import {
   settings,
   leave,
 } from "./commands/index";
+import clown from "./yarosh/clown";
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ bot.command("ask", askGpt());
 
 // Yarosh
 bot.use(whoIsMisterYarosh());
+bot.use(clown());
 
 // Default
 bot.start(start());
