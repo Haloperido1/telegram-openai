@@ -6,6 +6,7 @@ const logger = () => {
       // @ts-expect-error text prop
       `[User]:${ctx.message?.from.username}|[Chat]:${ctx.message?.chat.title}|[message]:${ctx.message.text}`
     );
+    // console.log(ctx);
     const start = new Date();
     await next();
     const ms = new Date().getTime() - start.getTime();
