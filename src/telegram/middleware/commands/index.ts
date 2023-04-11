@@ -26,11 +26,10 @@ const leave = () => {
   };
 };
 
-const state = () => {
+const ctx = () => {
   return (ctx: Context, next: () => Promise<void>) => {
-    console.log(ctx.state.message);
-    console.log(ctx.state.lastmessage);
+    console.log(ctx.chat);
   };
 };
 
-export { start, help, settings, leave, state };
+export { start, help, settings, leave, ctx };
